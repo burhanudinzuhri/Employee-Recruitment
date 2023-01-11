@@ -1,0 +1,133 @@
+<!-- Form edit Modal -->
+<form action="/employee/edit/{{d[1]}}" method="post">
+    <div class="modal fade" id="editModal{{d[1]}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="editModal">Edit Employee Candidate Data</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            
+            <label for="name" class="form-label">Name of Employee Candidate</label>
+            <input class="form-control form-control-sm" name="name" type="text" value='{{d[2]}}' placeholder="What is the name of the employee candidate?" aria-label=".form-control-sm example" required>
+
+            <label for="doj_extended" class="form-label">Date of Joining Extended</label>
+            <select class="form-select form-select-sm" name="doj_extended" aria-label=".form-select-sm example" required>
+                {% for a in data_att[0] %}
+                    {% if d[3] == a %}
+                        <option value='{{d[3]}}' selected>{{d[3]}}</option>
+                    {% else %}
+                        <option value='{{a}}'>{{a}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="duration_to_accept_the_offer" class="form-label">Duration to Accept the Offer</label>
+            <input class="form-control form-control-sm" name="duration_to_accept_the_offer" type="number" min="1"value='{{d[4]}}' placeholder="How many days will the employee candidate receive the offer?" aria-label=".form-control-sm example" required>
+            
+            <label for="notice_period" class="form-label">Notice Period</label>
+            <input class="form-control form-control-sm" name="notice_period" type="number" min="1" value='{{d[5]}}' placeholder="How many days is the offer notification period?" aria-label=".form-control-sm example" required>
+
+            <label for="offered_band" class="form-label">Offered Band</label>
+            <select class="form-select form-select-sm" name="offered_band" aria-label=".form-select-sm example" required>
+                {% for a,b in data_att[1].items() %}
+                    {% if d[6] == a %}
+                        <option value='{{d[6]}}' selected>{{b}}</option>
+                    {% else %}
+                        <option value='{{a}}'>{{b}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="percent_hike_expected_in_ctc" class="form-label">Percent Hike Expected in Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_hike_expected_in_ctc" type="numeric" value='{{d[7]}}' placeholder="How many cost to the company expected?" aria-label=".form-control-sm example" required>
+
+            <label for="percent_hike_offered_in_ctc" class="form-label">Percent Hike Offered in Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_hike_offered_in_ctc" type="numeric" value='{{d[8]}}' placeholder="How many cost to the company offered?" aria-label=".form-control-sm example" required>
+
+            <label for="percent_difference_ctc" class="form-label">Percent Difference Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_difference_ctc" type="numeric" value='{{d[9]}}' placeholder="How many cost to company difference?" aria-label=".form-control-sm example" required>
+
+            <label for="joining_bonus" class="form-label">Joining Bonus</label>
+            <select class="form-select form-select-sm" name="joining_bonus" aria-label=".form-select-sm example" required>
+                {% for a in data_att[0] %}
+                    {% if d[10] == a %}
+                        <option value='{{d[10]}}' selected>{{d[10]}}</option>
+                    {% else %}
+                        <option value='{{a}}'>{{a}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            
+            <label for="candidate_relocate_actual" class="form-label">Candidate Relocate Actual</label>
+            <select class="form-select form-select-sm" name="candidate_relocate_actual" aria-label=".form-select-sm example" required>
+                {% for a in data_att[0] %}
+                    {% if d[11] == a %}
+                        <option value='{{d[11]}}' selected>{{d[11]}}</option>
+                    {% else %}
+                        <option value='{{a}}' >{{a}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="gender" class="form-label">Gender of Employee Candidate</label>
+            <select class="form-select form-select-sm" name="gender" aria-label=".form-select-sm example" required>
+                {% for a in data_att[2] %}
+                    {% if d[12] == a %}
+                        <option value='{{d[12]}}' selected>{{d[12]}}</option>
+                    {% else %}
+                        <option value='{{a}}' >{{a}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+
+            <label for="candidate_source" class="form-label">Employee Candidate Source</label>
+            <select class="form-select form-select-sm" name="candidate_source" aria-label=".form-select-sm example" required>
+                {% for a,b in data_att[3].items() %}
+                    {% if d[13] == a %}
+                        <option value='{{d[13]}}' selected>{{d[13]}}</option>
+                    {% else %}
+                        <option value='{{a}}' >{{a}}</option>
+                    {% endif %}
+                {% endfor %}
+                
+            </select>
+
+            <label for="rex_in_yrs" class="form-label">Relevant Years of Experience</label>
+            <input class="form-control form-control-sm" name="rex_in_yrs" type="number" min="1" value='{{d[14]}}' placeholder="How many years of relevant experience does the employee candidate have?" aria-label=".form-control-sm example" required>
+
+            <label for="lob" class="form-label">Line of Business</label>
+            <select class="form-select form-select-sm" name="lob" aria-label=".form-select-sm example" required>
+                {% for a,b in data_att[4].items() %}
+                    {% if d[15] == a %}
+                        <option value='{{d[15]}}' selected>{{d[15]}}</option>
+                    {% else %}
+                        <option value='{{a}}' >{{b}}</option>
+                    {% endif %}
+                {% endfor %}    
+            </select>
+
+            <label for="location" class="form-label">Company Location</label>
+            <select class="form-select form-select-sm" name="location" aria-label=".form-select-sm example" required>
+                {% for a,b in data_att[5].items() %}
+                    {% if d[16] == a %}
+                        <option value='{{d[16]}}' selected>{{d[16]}}</option>
+                    {% else %}
+                        <option value='{{a}}' >{{a}}</option>
+                    {% endif %}
+                {% endfor %}    
+            </select>
+            <label for="age" class="form-label">Age of Employee Candidate</label>
+            <input class="form-control form-control-sm" name="age" type="number" min="1" value='{{d[17]}}' placeholder="How old is the employee candidate?" aria-label=".form-control-sm example" required>
+
+            </div>
+            <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form>            
+<!-- end Form edit Modal -->

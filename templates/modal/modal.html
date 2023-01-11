@@ -1,0 +1,109 @@
+<!-- Form input Modal -->
+<form action="/employee/add" method="post">
+    <div class="modal fade" id="tambahModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="tambahModal">Add Employee Candidate Data</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            
+            <label for="name" class="form-label">Name of Employee Candidate</label>
+            <input class="form-control form-control-sm" name="name" type="text" placeholder="What is the name of the employee candidate?" aria-label=".form-control-sm example" required>
+
+            <label for="doj_extended" class="form-label">Date of Joining Extended</label>
+            <select class="form-select form-select-sm" name="doj_extended" aria-label=".form-select-sm example" required>
+                <option value="" selected>The date to join is proposed by the candidate or not?</option>
+                {% for a in data_att[0] %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="duration_to_accept_the_offer" class="form-label">Duration to Accept the Offer</label>
+            <input class="form-control form-control-sm" name="duration_to_accept_the_offer" type="number" min="1" placeholder="How many days will the employee candidate receive the offer?" aria-label=".form-control-sm example" required>
+            
+            <label for="notice_period" class="form-label">Notice Period</label>
+            <input class="form-control form-control-sm" name="notice_period" type="number" min="1" placeholder="How many days is the offer notification period?" aria-label=".form-control-sm example" required>
+
+            <label for="offered_band" class="form-label">Offered Band</label>
+            <select class="form-select form-select-sm" name="offered_band" aria-label=".form-select-sm example" required>
+                <option value="" selected>What bands does the company offer?</option>
+                {% for a,b in data_att[1].items() %}
+                <option value="{{a}}">{{b}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="percent_hike_expected_in_ctc" class="form-label">Percent Hike Expected in Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_hike_expected_in_ctc" type="number" min="0" max="100" placeholder="How many cost to the company expected?" aria-label=".form-control-sm example" required>
+
+            <label for="percent_hike_offered_in_ctc" class="form-label">Percent Hike Offered in Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_hike_offered_in_ctc" type="number" min="0" max="100" placeholder="How many cost to the company offered?" aria-label=".form-control-sm example" required>
+
+            <label for="percent_difference_ctc" class="form-label">Percent Difference Cost to Company</label>
+            <input class="form-control form-control-sm" name="percent_difference_ctc" type="number" min="0" max="100" placeholder="How many cost to company difference?" aria-label=".form-control-sm example" required>
+
+            <label for="joining_bonus" class="form-label">Joining Bonus</label>
+            <select class="form-select form-select-sm" name="joining_bonus" aria-label=".form-select-sm example" required>
+                <option value="" selected>Will the employee candidate get a bonus or not?</option>
+                {% for a in data_att[0] %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="candidate_relocate_actual" class="form-label">Candidate Relocate Actual</label>
+            <select class="form-select form-select-sm" name="candidate_relocate_actual" aria-label=".form-select-sm example" required>
+                <option value="" selected>Does the employee candidate have to relocate or not?</option>
+                {% for a in data_att[0] %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="gender" class="form-label">Gender of Employee Candidate</label>
+            <select class="form-select form-select-sm" name="gender" aria-label=".form-select-sm example" required>
+                <option value="" selected>What is the gender of the employee candidate?</option>
+                {% for a in data_att[2] %}
+                <option value="{{a}}">{{a}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="candidate_source" class="form-label">Employee Candidate Source</label>
+            <select class="form-select form-select-sm" name="candidate_source" aria-label=".form-select-sm example" required>
+                <option value="" selected>Where do employee candidate resumes come from?</option>
+                {% for a,b in data_att[3].items() %}
+                <option value="{{a}}">{{b}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="rex_in_yrs" class="form-label">Relevant Years of Experience</label>
+            <input class="form-control form-control-sm" name="rex_in_yrs" min="1" type="number" placeholder="How many years of relevant experience does the employee candidate have?" aria-label=".form-control-sm example" required>
+
+            <label for="lob" class="form-label">Line of Business</label>
+            <select class="form-select form-select-sm" name="lob" aria-label=".form-select-sm example" required>
+                <option value="" selected>What business areas does the company offer?</option>
+                {% for a,b in data_att[4].items() %}
+                <option value="{{a}}">{{b}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="location" class="form-label">Company Location</label>
+            <select class="form-select form-select-sm" name="location" aria-label=".form-select-sm example" required>
+                <option value="" selected>Where is the location of the company's offer?</option>
+                {% for a,b in data_att[5].items() %}
+                <option value="{{a}}">{{b}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="age" class="form-label">Age of Employee Candidate</label>
+            <input class="form-control form-control-sm" name="age" type="number" min="1" placeholder="How old is the employee candidate?" aria-label=".form-control-sm example" required>
+
+            </div>
+            <div class="modal-footer">
+            <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</form> 
+<!-- end Form input Modal -->

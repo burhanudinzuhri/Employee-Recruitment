@@ -1,0 +1,182 @@
+{%include 'header/header.html'%}
+    <body class="sb-nav-fixed">
+        {%include 'header/topbar.html'%}             
+        {%include 'header/sidebar.html'%} 
+            <div id="layoutSidenav_content">
+                <main>
+                  <div class="container-fluid px-4">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                  </div>
+                  <div class="container py-2">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          {%include 'modal/card.html'%}
+                          <br><br><br>
+                          <canvas id="myChart_1" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <canvas id="myChart_2" style="width:100%;max-width:600px"></canvas>
+                          <br>
+                          <canvas id="myChart_3" style="width:100%;max-width:600px"></canvas>
+                        </div>
+                      </div>
+                  </div>
+                </main>
+                {%include 'footer/footer.html'%}
+            </div>
+        </div>
+        {%include 'footer/js.html'%}
+        <script>
+            var xValues_1 = ["Joined", "Not Joined"];
+            var yValues_1 = [{{count_joined}}, {{count_not_joined}}];
+            var barColors_1 = ["green", "orange"];
+
+            new Chart("myChart_1", {
+              type: "pie",
+              data: {
+                labels: xValues_1,
+                datasets: [{
+                  backgroundColor: barColors_1,
+                  data: yValues_1
+                }]
+              },
+              options: {
+                pieceLabel: {
+                  render: 'percentage',
+                  fontColor: 'white',
+                  fontSize: 14,
+                },
+                legend: {
+                  display: true,
+                  position: "right"
+                },
+                title: {
+                  display: true,
+                  text: "Status Distribution of Employee Candidate"
+                },
+                tooltips: {
+                  enabled: false
+                },
+                plugins: {
+                  datalabels: {
+                    formatter: (value, ctx) => {
+                      let sum = 0;
+                      let dataArr = ctx.chart.data.datasets[0].data;
+                      dataArr.map(data => {
+                        sum += data;
+                      });
+                      let percentage = (value*100 / sum).toFixed(2)+"%";
+                      return percentage;
+                    },
+                    color: '#fff',
+                  }
+                }
+              }
+            });
+
+            new Chart("myChart_2", {
+              type: "bar",
+              data: {
+                labels: ["Gender"],
+                datasets: [{
+                  label: "Male Joined",
+                  backgroundColor: "#FBBA72",
+                  data: [{{count_male_joined}}]
+                },{
+                  label: "Male Not Joined",
+                  backgroundColor: "#CA5310",
+                  data: [{{count_male_not_joined}}]
+                },{
+                  label: "Female Joined",
+                  backgroundColor: "#8F250C",
+                  data: [{{count_female_joined}}]
+                },{
+                  label: "Female Not Joined",
+                  backgroundColor: "#691E06",
+                  data: [{{count_female_not_joined}}]
+                },]
+              },
+              options: {
+                legend: {
+                  display: true,
+                  position: "right"
+                },
+                title: {
+                  display: true,
+                  text: "Gender Distribution of Employee Candidate"
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                  }]
+                },
+                plugins: {
+                  datalabels: {
+                    color: '#fff',
+                  }
+                }
+              }
+            });
+
+            new Chart("myChart_3", {
+              type: "bar",
+              data: {
+                labels: ["Candidate Source"],
+                datasets: [{
+                  label: "Agency Joined",
+                  backgroundColor: "#E6F14D",
+                  data: [{{count_agency_joined}}]
+                },{
+                  label: "Agency Not Joined",
+                  backgroundColor: "#C3D350",
+                  data: [{{count_agency_not_joined}}]
+                },{
+                  label: "Direct Joined",
+                  backgroundColor: "#84A07C",
+                  data: [{{count_direct_joined}}]
+                },{
+                  label: "Direct Not Joined",
+                  backgroundColor: "#575D90",
+                  data: [{{count_direct_not_joined}}]
+                },{
+                  label: "Employee Referral Joined",
+                  backgroundColor: "#595F72",
+                  data: [{{count_referral_joined}}]
+                },{
+                  label: "Employee Referral Not Joined",
+                  backgroundColor: "#2B2D42",
+                  data: [{{count_referral_not_joined}}]
+                }]
+              },
+              options: {
+                legend: {
+                  display: true,
+                  position: "right"
+                },
+                title: {
+                  display: true,
+                  text: "Candidate Source Distribution of Employee Candidate"
+                },
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                  }]
+                },
+                plugins: {
+                  datalabels: {
+                    color: '#fff',
+                  }
+                }
+              }
+            });
+              
+        </script>
+    </body>
+</html>

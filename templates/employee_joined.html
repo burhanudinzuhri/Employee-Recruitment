@@ -1,0 +1,80 @@
+<!-- employee candidate joined page  -->
+{%include 'header/header.html'%}
+    <body class="sb-nav-fixed">
+        {%include 'header/topbar.html'%}             
+        {%include 'header/sidebar.html'%} 
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Employee Candidate Joined</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Employee Candidate Joined</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Employee Candidate Joined Data
+                            </div>
+
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name of Employee Candidate</th>
+                                            <th>Date of Joining Extended</th>
+                                            <th>Duration to Accept the Offer</th>
+                                            <th>Notice Period</th>
+                                            <th>Offered Band</th>
+                                            <th>Percent Hike Expected in Cost to Company</th>
+                                            <th>Percent Hike Offered in Cost to Company</th>
+                                            <th>Percent Difference Cost to Company</th>
+                                            <th>Joining Bonus</th>
+                                            <th>Candidate Relocate Actual</th>
+                                            <th>Gender of Employee Candidate</th>
+                                            <th>Employee Candidate Source</th>
+                                            <th>Relevant Years of Experience</th>
+                                            <th>Line of Business</th>
+                                            <th>Company Location</th>
+                                            <th>Age of Employee Candidate</th>
+                                            <th>Status</th>
+                                            <th>Probability</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for d in employee_joined %}
+                                      <tr>
+                                          <td>{{ d[1] }}</td>
+                                          <td>{{ d[2] }}</td>
+                                          <td>{{ d[3] }}</td>
+                                          <td>{{ d[4] }}</td>
+                                          <td>{{ d[5] }}</td>
+                                          <td>{{ d[6] }}</td>
+                                          <td>{{ d[7] }}</td>
+                                          <td>{{ d[8] }}</td>
+                                          <td>{{ d[9] }}</td>
+                                          <td>{{ d[10] }}</td>
+                                          <td>{{ d[11] }}</td>
+                                          <td>{{ d[12] }}</td>
+                                          <td>{{ d[13] }}</td>
+                                          <td>{{ d[14] }}</td>
+                                          <td>{{ d[15] }}</td>
+                                          <td>{{ d[16] }}</td>
+                                          <td>{{ d[17] }}</td>
+                                          <td>{{ d[18] }}</td>
+                                          <td>{{ d[19] }}</td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                {%include 'footer/footer.html'%}
+            </div>
+        </div>
+        {%include 'footer/js.html'%}
+    </body>
+</html>
+<!-- end employee candidate joined page  -->
